@@ -1,0 +1,22 @@
+#Chiamata GET per avere tutte le associazioni
+GET http://localhost:5050/associations
+#####
+
+#Chiamata POST per registrazione nuova Associazione
+POST http://localhost:5050/register/associations HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Canile di Caluso",
+    "region": "Piemonte",
+    "address":"Reg. San Defendente 10014 Caluso (TO)",
+    "password": "caniledicaluso",
+    "email": "caniledicaluso@gmail.com",
+    "logo":"Canile Di Caluso",
+    "description": "Vieni a trovarci siamo a Caluso e Rivarolo.
+    Tanti cani affettuosi cercano una famiglia che possa adottarli e dare loro una casa e tante coccole.
+    In cambio un cane ti regalerà la sua fedeltà ed il suo amore per sempre.
+    Non comprare un cane. adottalo. Ti aspettiamo.",
+    "pIva": 27349861100
+}
+
