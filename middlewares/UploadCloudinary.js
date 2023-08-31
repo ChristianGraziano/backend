@@ -24,7 +24,16 @@ const cloudStorageLogo = new CloudinaryStorage({
   },
 });
 
+const cloudStoragePostImg = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "AssociationsLogo",
+    allowed_formats: ["jpg", "jpeg", "png"],
+  },
+});
+
+const PostImg = multer({ storage: cloudStoragePostImg });
 const AvatarUserImg = multer({ storage: cloudStorageAvatarUser });
 const LogoAssociationImg = multer({ storage: cloudStorageLogo });
 
-module.exports = (AvatarUserImg, LogoAssociationImg);
+module.exports = (AvatarUserImg, LogoAssociationImg, PostImg);

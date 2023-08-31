@@ -7,7 +7,7 @@ require("dotenv").config();
 
 //Routes
 const associationRoutes = require("./routes/associations");
-
+const postRoutes = require("./routes/posts");
 //middlerwares
 
 const app = express();
@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", associationRoutes);
+app.use("/", postRoutes);
 
 mongoose.connect(process.env.MONGO_DB_URL);
 const db = mongoose.connection;

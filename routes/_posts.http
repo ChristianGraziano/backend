@@ -1,0 +1,33 @@
+
+#chiamata GET per cercare post tramite ID
+GET http://localhost:5050/posts/:id
+#####
+
+
+#chiamata per avere tutti i post
+GET http://localhost:5050/posts/?pageSize=10
+Content-Type: application/json
+
+#####
+ #Chiamata per Creare Nuovo Post
+POST http://localhost:5050/posts/create HTTP/1.1
+Content-Type: application/json
+
+{
+   "typeAnimal": "Cane",
+   "name": "Balto",
+   "age": "2 anni",
+   "image": "",
+   "content": "cane molto socievole e bravo con i bambini"
+}
+
+#####
+
+PATCH http://localhost:5050/posts/:id
+Content-Type: application/json
+{
+    "name":"Nome Modificato"
+}
+
+######
+DELETE http://localhost:5050/posts/:id

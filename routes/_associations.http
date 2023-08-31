@@ -13,10 +13,18 @@ Content-Type: application/json
     "password": "caniledicaluso",
     "email": "caniledicaluso@gmail.com",
     "logo":"Canile Di Caluso",
-    "description": "Vieni a trovarci siamo a Caluso e Rivarolo.
-    Tanti cani affettuosi cercano una famiglia che possa adottarli e dare loro una casa e tante coccole.
-    In cambio un cane ti regalerà la sua fedeltà ed il suo amore per sempre.
-    Non comprare un cane. adottalo. Ti aspettiamo.",
+    "description": "",
     "pIva": 27349861100
 }
+#####
+#Chiamata per cancellare associazione 
+DELETE http://localhost:5050/associations/ID
 
+#####
+
+PATCH http://localhost:5050/associations/ID
+Content-Type: application/json
+
+{
+    "name": "Canile di rivarolo"
+}
