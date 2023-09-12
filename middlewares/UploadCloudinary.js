@@ -27,7 +27,7 @@ const cloudStorageLogo = new CloudinaryStorage({
 const cloudStoragePostImg = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "AssociationsLogo",
+    folder: "PostImgPets",
     allowed_formats: ["jpg", "jpeg", "png"],
   },
 });

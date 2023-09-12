@@ -1,3 +1,9 @@
+#Chiamata per cercare i post tramite ID dell'associazione 
+GET http://localhost:5050/posts/association/64fef282de8a579b31b7262c
+
+
+#####
+
 
 #chiamata GET per cercare post tramite ID
 GET http://localhost:5050/posts/:id

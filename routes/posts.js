@@ -50,7 +50,11 @@ router.post(
     const newPost = new PostModel({
       typeAnimal: req.body.typeAnimal,
       name: req.body.name,
-      age: req.file.age,
+      age: req.body.age,
+      gender: req.body.gender,
+      dimension: req.body.dimension,
+      location: req.body.location,
+      city: req.body.city,
       image: req.file.path,
       association: user._id,
       content: req.body.content,
@@ -151,6 +155,37 @@ router.delete("/posts/:id", async (req, res) => {
     res.status(500).send({
       statusCode: 500,
       message: "Errore nella chiamata Delete!",
+    });
+  }
+});
+
+//Chiamata GET per cercare i post per ID dell'Associazione
+
+// Chiamata GET per ottenere i post di un'associazione specifica + paginazione
+router.get("/posts/association/:associationId", async (req, res) => {
+  const { page = 1, pageSize = 6 } = req.query;
+  const { associationId } = req.params;
+
+  try {
+    const post = await PostModel.find({ association: associationId })
+      .limit(pageSize)
+      .skip((page - 1) * pageSize)
+      .populate("association");
+
+    const totalPost = await PostModel.count({ association: associationId });
+
+    res.status(200).send({
+      statusCode: 200,
+      totalPost: totalPost,
+      currentPage: +page,
+      pageSize: +pageSize,
+      post: post,
+    });
+  } catch (error) {
+    res.status(500).send({
+      statusCode: 500,
+      message: "Internal Server Error!",
+      error,
     });
   }
 });

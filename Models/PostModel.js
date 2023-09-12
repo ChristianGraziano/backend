@@ -11,6 +11,18 @@ const PostModelSchema = new mongoose.Schema(
     age: {
       type: String,
     },
+    gender: {
+      type: String,
+    },
+    dimension: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
     image: {
       type: String,
     },
