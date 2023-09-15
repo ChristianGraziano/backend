@@ -101,7 +101,7 @@ router.get("/posts/:id", async (req, res) => {
 });
 
 //chiamata PATCH per modificare un post
-router.patch("/posts/:id", async (req, res) => {
+router.patch("/posts/change/:id", async (req, res) => {
   const { id } = req.params;
 
   try {

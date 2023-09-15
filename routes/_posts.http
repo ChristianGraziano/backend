@@ -29,10 +29,11 @@ Content-Type: application/json
 
 #####
 
-PATCH http://localhost:5050/posts/:id
+PATCH http://localhost:5050/posts/change/64ff324dde8a579b31b7267c
 Content-Type: application/json
+
 {
-    "name":"Nome Modificato"
+    "name": "Nome Modificato"
 }
 
 ######
