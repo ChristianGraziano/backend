@@ -7,19 +7,20 @@ const router = express.Router();
 
 // Chiamata GET per avere tutti i post + paginazione
 router.get("/posts", async (req, res) => {
-  const { page = 1, pageSize = 10 } = req.query;
+  const { page = 1, pageSize = 8 } = req.query;
 
   try {
     const post = await PostModel.find()
+      .populate("association")
       .limit(pageSize)
-      .skip((page - 1) * pageSize)
-      .populate("association");
+      .skip((page - 1) * pageSize);
 
     const totalPost = await PostModel.count();
 
     res.status(200).send({
       statusCode: 200,
       totalPost: totalPost,
+      totalPages: Math.ceil(totalPost / pageSize),
       currentPage: +page,
       pageSize: +pageSize,
       post: post,
