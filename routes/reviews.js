@@ -76,7 +76,7 @@ router.post("/reviews/create", async (req, res) => {
 
   const newReview = new ReviewsModel({
     userName: req.body.userName,
-    associationId: association._id,
+    associationId: req.body.associationId,
     content: req.body.content,
     rating: req.body.rating,
   });

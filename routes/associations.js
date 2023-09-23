@@ -10,7 +10,9 @@ const router = express.Router();
 // Chiamata GET per avere tutte le associazioni
 router.get("/associations", async (req, res) => {
   try {
-    const association = await AssociationModel.find().populate("posts");
+    const association = await AssociationModel.find()
+      .populate("posts")
+      .populate("reviews");
 
     const totalAssociation = await AssociationModel.count();
 
@@ -71,7 +73,9 @@ router.post(
 router.get("/associations/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const associationById = await AssociationModel.findById(id);
+    const associationById = await AssociationModel.findById(id).populate(
+      "reviews"
+    );
     res.status(200).send({
       statusCode: 200,
       associationById,
@@ -110,6 +114,49 @@ router.delete("/associations/:id", async (req, res) => {
     });
   }
 });
+
+// ...
+
+// Chiamata PATCH per cambiare l'immagine del logo dell'associazione
+router.patch(
+  "/associations/changeLogo/:id",
+  LogoAssociationImg.single("logo"),
+  async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const associationExist = await AssociationModel.findById(id);
+
+      if (!associationExist) {
+        return res.status(404).send({
+          statusCode: 404,
+          message: `Association with ID ${id} not found!`,
+        });
+      }
+
+      const logoPath = req.file.path;
+
+      const updatedAssociation = await associationExist.updateOne(
+        { logo: logoPath },
+        { new: true }
+      );
+
+      res.status(200).send({
+        statusCode: 200,
+        message: "Association logo updated successfully!",
+        updatedAssociation,
+      });
+    } catch (error) {
+      res.status(500).send({
+        statusCode: 500,
+        message: "Error updating association logo!",
+        error,
+      });
+    }
+  }
+);
+
+// ...
 
 //PATCH per modificare informazioni dell'associazione
 router.patch("/associations/:id", async (req, res) => {

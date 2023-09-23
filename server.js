@@ -10,6 +10,7 @@ const associationRoutes = require("./routes/associations");
 const postRoutes = require("./routes/posts");
 const loginRoute = require("./routes/login");
 const reviewsRoutes = require("./routes/reviews");
+const requestAdoptionRoutes = require("./routes/requestAdoption");
 //middlerwares
 
 const app = express();
@@ -21,6 +22,7 @@ app.use("/", associationRoutes);
 app.use("/", postRoutes);
 app.use("/", loginRoute);
 app.use("/", reviewsRoutes);
+app.use("/", requestAdoptionRoutes);
 
 mongoose.connect(process.env.MONGO_DB_URL);
 const db = mongoose.connection;
