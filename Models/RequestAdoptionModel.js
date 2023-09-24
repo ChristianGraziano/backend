@@ -26,6 +26,10 @@ const RequestModelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    fiscalCode: {
+      type: String,
+      required: true,
+    },
     avatar: {
       type: String,
       required: true,

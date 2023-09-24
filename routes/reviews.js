@@ -33,7 +33,7 @@ router.get("/reviews", async (req, res) => {
   }
 });
 
-//Chiamata GET per avere tutti i commenti relativi all'ID del post
+//Chiamata GET per avere tutti i commenti relativi all'ID del'associazione
 router.get("/reviews/association/:associationId", async (req, res) => {
   try {
     const reviewsAssociation = await ReviewsModel.find({

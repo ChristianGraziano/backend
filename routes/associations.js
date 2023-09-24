@@ -141,8 +141,8 @@ router.patch(
         { new: true }
       );
 
-      res.status(200).send({
-        statusCode: 200,
+      res.status(201).send({
+        statusCode: 201,
         message: "Association logo updated successfully!",
         updatedAssociation,
       });
@@ -180,8 +180,8 @@ router.patch("/associations/:id", async (req, res) => {
       options
     );
 
-    res.status(200).send({
-      statusCode: 200,
+    res.status(201).send({
+      statusCode: 201,
       message: "Change association information successful!!",
       result,
     });
