@@ -1,3 +1,8 @@
+#Get oer filtrare i post in base alla regione
+GET http://localhost:5050/posts/filterRegion?region=Piemonte
+
+#####
+
 #Chiamata per cercare i post tramite ID dell'associazione 
 GET http://localhost:5050/posts/association/64fef282de8a579b31b7262c
 

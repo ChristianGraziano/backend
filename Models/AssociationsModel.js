@@ -5,6 +5,10 @@ const AssociationModelSchema = new mongoose.Schema(
     name: {
       type: String,
     },
+    /* role: {
+    type:String, 
+    enum: ["user","company"] 
+    }, */
     region: {
       type: String,
     },
@@ -37,6 +41,13 @@ const AssociationModelSchema = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Review",
+        default: [],
+      },
+    ],
+    request: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "RequestAdoption",
         default: [],
       },
     ],

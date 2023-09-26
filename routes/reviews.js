@@ -82,7 +82,7 @@ router.post("/reviews/create", async (req, res) => {
   });
   try {
     const review = await newReview.save();
-    await AssociationModel.updateOne({ $push: { reviews: review } });
+    await association.updateOne({ $push: { reviews: review } });
     res.status(201).send({
       statusCode: 201,
       message: "New Reviews Successfully Created!",

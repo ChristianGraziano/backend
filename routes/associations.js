@@ -73,9 +73,9 @@ router.post(
 router.get("/associations/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const associationById = await AssociationModel.findById(id).populate(
-      "reviews"
-    );
+    const associationById = await AssociationModel.findById(id)
+      .populate("reviews")
+      .populate("request");
     res.status(200).send({
       statusCode: 200,
       associationById,

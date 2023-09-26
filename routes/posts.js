@@ -34,6 +34,38 @@ router.get("/posts", async (req, res) => {
   }
 });
 
+//GET PER FILTRARE POST PER REGIONE
+router.get("/posts/filterRegion", async (req, res) => {
+  const { page = 1, pageSize = 8 } = req.query;
+  console.log(req.query);
+
+  try {
+    const post = await PostModel.find({
+      location: { $regex: new RegExp(req.query.region, "i") },
+    })
+      .populate("association")
+      .limit(pageSize)
+      .skip((page - 1) * pageSize);
+
+    const totalPost = await PostModel.count();
+
+    res.status(200).send({
+      statusCode: 200,
+      totalPost: totalPost,
+      totalPages: Math.ceil(totalPost / pageSize),
+      currentPage: +page,
+      pageSize: +pageSize,
+      post: post,
+    });
+  } catch (error) {
+    res.status(500).send({
+      statusCode: 500,
+      message: "Internal Server Error!",
+      error,
+    });
+  }
+});
+
 //chiamata per creare un nuovo post
 router.post(
   "/posts/create",
