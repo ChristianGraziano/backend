@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "enigines": {
-    "node":">15.14.0"
+    "node": ">=14.20.1"
   },
   "scripts": {
     "dev": "nodemon server.js"
