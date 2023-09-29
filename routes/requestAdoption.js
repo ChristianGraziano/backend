@@ -78,20 +78,20 @@ router.delete("/requestAdoption/:id", async (req, res) => {
   if (!requestExsist) {
     return res.status(404).send({
       statusCode: 404,
-      message: ` Post with ${id} not found!`,
+      message: ` request with ${id} not found!`,
     });
   }
   try {
-    const postDelete = await PostModel.findByIdAndDelete(id);
+    const requestDelete = await RequestAdoptionModel.findByIdAndDelete(id);
     res.status(200).send({
       statusCode: 200,
-      message: "Post eliminato correttamente",
-      postDelete,
+      message: "richiesta di adozione eliminato correttamente",
+      requestDelete,
     });
   } catch {
     res.status(500).send({
       statusCode: 500,
-      message: "Errore nella chiamata Delete!",
+      message: "Errore nella chiamata Delete delle request!",
     });
   }
 });
