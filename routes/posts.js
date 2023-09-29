@@ -36,7 +36,7 @@ router.get("/posts", async (req, res) => {
 
 //GET PER FILTRARE POST PER REGIONE
 router.get("/posts/filterRegion", async (req, res) => {
-  const { page = 1, pageSize = 8 } = req.query;
+  const { page = 1, pageSize = 12 } = req.query;
   console.log(req.query);
 
   try {

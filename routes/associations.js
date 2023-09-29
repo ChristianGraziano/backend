@@ -20,7 +20,7 @@ router.get("/associations", async (req, res) => {
       statusCode: 200,
       message: " call GET associations successful",
       totalAuthor: totalAssociation,
-      users: association,
+      association: association,
     });
   } catch (error) {
     res.status(500).send({

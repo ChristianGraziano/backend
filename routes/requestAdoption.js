@@ -71,4 +71,29 @@ router.get("/requestAdoption/association/:associationId", async (req, res) => {
   }
 });
 
+router.delete("/requestAdoption/:id", async (req, res) => {
+  const { id } = req.params;
+  const requestExsist = await RequestAdoptionModel.findById(id);
+
+  if (!requestExsist) {
+    return res.status(404).send({
+      statusCode: 404,
+      message: ` Post with ${id} not found!`,
+    });
+  }
+  try {
+    const postDelete = await PostModel.findByIdAndDelete(id);
+    res.status(200).send({
+      statusCode: 200,
+      message: "Post eliminato correttamente",
+      postDelete,
+    });
+  } catch {
+    res.status(500).send({
+      statusCode: 500,
+      message: "Errore nella chiamata Delete!",
+    });
+  }
+});
+
 module.exports = router;
