@@ -50,13 +50,6 @@ router.get("/requestAdoption/association/:associationId", async (req, res) => {
       associationId: req.params.associationId,
     });
 
-    if (!requestAssociation || requestAssociation.length === 0) {
-      return res.status(404).send({
-        statusCode: 404,
-        message: "No request Found for this post",
-      });
-    }
-
     res.status(200).send({
       statusCode: 200,
       totalCount: requestAssociation.length,

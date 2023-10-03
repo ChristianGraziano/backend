@@ -4,6 +4,7 @@ const AssociationModelSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      required: true,
     },
     /* role: {
     type:String, 
@@ -11,21 +12,27 @@ const AssociationModelSchema = new mongoose.Schema(
     }, */
     region: {
       type: String,
+      required: true,
     },
     address: {
       type: String,
+      required: true,
     },
     password: {
       type: String,
+      required: true,
     },
     email: {
       type: String,
+      required: true,
     },
     logo: {
       type: String,
+      required: true,
     },
     description: {
       type: String,
+      required: true,
     },
     pIva: {
       type: Number,
